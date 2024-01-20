@@ -16,8 +16,6 @@ export default function SearchBar() {
     });
   }
 
-  console.log(searched);
-
   // TODO: Fix the mobile version long search term
 
   return (
