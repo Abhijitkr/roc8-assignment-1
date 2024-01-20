@@ -51,8 +51,4 @@ export default function SearchBar() {
       </form>
     </section>
   );
-
-  function newFunction() {
-    return `Start new Search`;
-  }
 }

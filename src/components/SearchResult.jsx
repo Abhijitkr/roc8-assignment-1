@@ -1,12 +1,20 @@
 import { useContext } from "react";
 import { GlobalContext } from "../context/context";
+import { CircleLoader } from "react-spinners";
 
 export default function SearchResult() {
-  const { dataSet, searchTerm, searched } = useContext(GlobalContext);
+  const { dataSet, searchTerm, searched, loading } = useContext(GlobalContext);
 
-  return (
+  return loading ? (
+    <CircleLoader
+      color="white"
+      loading={loading}
+      size={100}
+      className="m-auto mt-20"
+    />
+  ) : (
     <section className=" mt-5 md:flex md:flex-wrap w-full">
-      {dataSet.length > 0
+      {!loading && dataSet.length > 0
         ? dataSet.map((item) => {
             return (
               <div key={item.id} className=" bg-white md:w-1/2 lg:w-4/12">
