@@ -1,11 +1,7 @@
 import Home from "./components/Home";
 
 function App() {
-  return (
-    <main>
-      <Home />
-    </main>
-  );
+  return <Home />;
 }
 
 export default App;

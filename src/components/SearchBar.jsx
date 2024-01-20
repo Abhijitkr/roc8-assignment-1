@@ -4,7 +4,7 @@ export default function SearchBar() {
   return (
     <section className="mt-20 m-auto w-8/12 lg:w-7/12 text-white">
       <form
-        className="relative group flex justify-center bg-[#D9D9D9] bg-opacity-20 backdrop-blur-xl items-center"
+        className="relative group flex justify-center bg-[#D9D9D9] bg-opacity-5 backdrop-blur-xl items-center"
         action=""
       >
         <input
