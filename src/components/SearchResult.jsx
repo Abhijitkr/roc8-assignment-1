@@ -20,7 +20,7 @@ export default function SearchResult() {
       className="m-auto mt-20"
     />
   ) : (
-    <section className=" mt-5 md:flex md:flex-wrap w-full">
+    <section className="mt-5 w-full">
       {searched && (
         <div className="bg-[#F5F5F5] overflow-hidden text-sm lg:text-lg md:text-base w-full p-5">
           {searchHistory && searchHistory.length > 0 && (
@@ -38,36 +38,44 @@ export default function SearchResult() {
           )}
         </div>
       )}
-      {!loading && dataSet.length > 0
-        ? dataSet.map((item) => {
-            return (
-              <div key={item.id} className=" bg-white md:w-1/2 lg:w-4/12">
-                <div className="px-4 py-2">
-                  <img
-                    src={item.largeImageURL}
-                    alt={`${searchTerm} - ${item.id}`}
-                    className="rounded-md md:h-[250px] md:w-[400px] m-auto"
-                  />
-                  <ul className="flex gap-5 justify-center">
-                    {item.tags.split(",").map((tag, tagIndex) => (
-                      <li
-                        key={tagIndex}
-                        className="bg-[#F5F5F5] text-[#767676] h-fit p-1 px-3 mt-2 cursor-pointer"
-                        onClick={() => handleHistory(tag)}
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
+      <div
+        className={
+          dataSet.length > 0
+            ? "bg-white pt-8 w-full md:flex md:flex-wrap"
+            : null
+        }
+      >
+        {!loading && dataSet.length > 0
+          ? dataSet.map((item) => {
+              return (
+                <div key={item.id} className=" md:w-1/2 lg:w-4/12">
+                  <div className="px-4 py-2">
+                    <img
+                      src={item.largeImageURL}
+                      alt={`${searchTerm} - ${item.id}`}
+                      className="rounded-md md:h-[250px] md:w-[400px] m-auto"
+                    />
+                    <ul className="flex gap-5 justify-center">
+                      {item.tags.split(",").map((tag, tagIndex) => (
+                        <li
+                          key={tagIndex}
+                          className="bg-[#F5F5F5] text-[#767676] h-fit p-1 px-3 mt-2 cursor-pointer"
+                          onClick={() => handleHistory(tag)}
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        : searched && (
-            <h1 className="text-white text-4xl font-semibold text-center mt-20 md:m-auto md:mt-20">
-              No Image Found!
-            </h1>
-          )}
+              );
+            })
+          : searched && (
+              <h1 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold text-center mt-20 md:m-auto md:mt-20">
+                No Image Found!
+              </h1>
+            )}
+      </div>
     </section>
   );
 }

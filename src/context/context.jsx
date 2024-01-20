@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import useLocalStorage from "../custom-hook/useLocalStorage";
 
 export const GlobalContext = createContext(null);
 
@@ -7,7 +8,10 @@ export default function GlobalState({ children }) {
   const [dataSet, setDataSet] = useState([]);
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [searchHistory, setSearchHistory] = useState([]);
+  const [searchHistory, setSearchHistory] = useLocalStorage(
+    "searchHistory",
+    []
+  );
 
   const api = "41894234-11cdb2a75bfe109dbdfd692d4";
 
