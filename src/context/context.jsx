@@ -7,6 +7,7 @@ export default function GlobalState({ children }) {
   const [dataSet, setDataSet] = useState([]);
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [searchHistory, setSearchHistory] = useState([]);
 
   const api = "41894234-11cdb2a75bfe109dbdfd692d4";
 
@@ -26,6 +27,17 @@ export default function GlobalState({ children }) {
     }
   }
 
+  function saveHistory(searchItem) {
+    const updatedHistory = [searchItem, ...searchHistory].slice(0, 10);
+    setSearchHistory(updatedHistory);
+  }
+
+  function handleHistory(search) {
+    setSearchTerm(search);
+    saveHistory(search);
+    fetchImages(search);
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -36,6 +48,10 @@ export default function GlobalState({ children }) {
         searched,
         setSearched,
         loading,
+        searchHistory,
+        setSearchHistory,
+        handleHistory,
+        saveHistory,
       }}
     >
       {children}

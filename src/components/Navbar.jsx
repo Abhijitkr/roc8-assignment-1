@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <header className="w-full pt-20">
+    <header className="w-full pt-10">
       <nav className="box-content flex justify-between items-center gap-10 py-4 px-6 text-sm w-10/12 m-auto text-white rounded-md shadow-2 shadow-[inset_0px_0px_4px_4px_rgb(182,182,182,.4)] backdrop-blur-xl">
         <div className="flex">Homepage</div>
         <ul className="flex items-center gap-5">

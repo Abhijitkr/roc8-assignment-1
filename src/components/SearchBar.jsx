@@ -4,11 +4,13 @@ import { GlobalContext } from "../context/context";
 import { useForm } from "react-hook-form";
 
 export default function SearchBar() {
-  const { fetchImages, searched, setSearched } = useContext(GlobalContext);
+  const { fetchImages, searched, setSearched, saveHistory } =
+    useContext(GlobalContext);
 
   const { register, handleSubmit, reset } = useForm();
 
   function handleSearch(data) {
+    saveHistory(data.search);
     setSearched(true);
     fetchImages(data.search);
     reset({
