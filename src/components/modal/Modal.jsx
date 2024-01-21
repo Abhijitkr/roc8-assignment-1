@@ -59,7 +59,7 @@ export default function Modal() {
     >
       <div
         key={selectedImage.id}
-        className="rounded-md bg-white w-10/12 lg:w-11/12 m-auto h-[600px] md:h-[800px] lg:h-fit overflow-auto"
+        className="rounded-md bg-white w-10/12 lg:w-11/12 m-auto h-[600px] md:h-[800px] lg:h-fit overflow-auto lg:max-w-[1080px]"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="bg-[#F5F5F5] flex justify-between items-center p-5">
@@ -164,16 +164,16 @@ export default function Modal() {
               <div>
                 <h3 className="text-start mt-5 font-semibold">Information</h3>
               </div>
-              <div className="flex mt-4 justify-between gap-3.5 flex-wrap font-medium">
+              <div className="flex mt-4 justify-between gap-3.5 flex-wrap font-medium break-words ">
                 {imageField.map((field) => (
                   <div
                     key={field.key}
-                    className="w-20 md:w-[150px] lg:w-[70px]"
+                    className="w-20 md:w-[150px] lg:w-[80px]"
                   >
                     <p className="text-[#717579] text-sm lg:text-xs ">
                       {field.key}
                     </p>
-                    <p className="text-sm lg:text-sm">
+                    <p className="text-sm lg:text-sm ">
                       {field.label.toLocaleString()}
                     </p>
                   </div>

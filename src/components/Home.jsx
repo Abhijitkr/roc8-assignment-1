@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import home from "../images/home.png";
 import SearchBar from "./SearchBar";
 import Navbar from "./navbar";
@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main
-      className="bg-cover bg-center h-screen"
+      className="bg-cover bg-center h-screen font-euclid"
       style={{ backgroundImage: `url(${home})` }}
     >
       <Navbar />
@@ -36,7 +36,7 @@ export default function Home() {
       {!searched && (
         <section className=" text-white p-2 text-center rounded-md w-4/12 text-wrap mt-5 m-auto text-xs shadow-2 shadow-[inset_0px_0px_4px_4px_rgb(182,182,182,.4)] bg-[#D9D9D9] bg-opacity-5 md:w-fit md:text-nowrap md:px-4">
           <p>
-            <strong>Trending: </strong>
+            <span className="font-semibold">Trending: </span>
             flowers, love, forest, river
           </p>
         </section>

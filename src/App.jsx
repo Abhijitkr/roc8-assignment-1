@@ -3,7 +3,6 @@ import Modal from "./components/modal/Modal";
 
 function App() {
   return <Home />;
-  // return <Modal />;
 }
 
 export default App;
