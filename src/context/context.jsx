@@ -16,7 +16,7 @@ export default function GlobalState({ children }) {
     []
   );
 
-  const api = "41894234-11cdb2a75bfe109dbdfd692d4";
+  const api = import.meta.env.VITE_PIXABAY_API;
 
   async function fetchImages(searchVal) {
     setSearchTerm(searchVal);

@@ -1,5 +1,6 @@
-import { useContext } from "react";
-import home from "../images/home.png";
+import { useContext, useEffect, useState } from "react";
+import home1 from "../images/home1.png";
+import home2 from "../images/home2.png";
 import SearchBar from "./SearchBar";
 import Navbar from "./navbar";
 import SearchResult from "./SearchResult";
@@ -7,11 +8,29 @@ import { GlobalContext } from "../context/context";
 
 export default function Home() {
   const { searchTerm, searched } = useContext(GlobalContext);
+  const homeBg = [home1, home2];
+
+  const [backgroundImage, setBackgroundImage] = useState(homeBg[0]);
+
+  const getNextBackgroundImage = () => {
+    const currentIndex = homeBg.indexOf(backgroundImage);
+    const nextIndex = (currentIndex + 1) % homeBg.length;
+    return homeBg[nextIndex];
+  };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      const newImage = getNextBackgroundImage();
+      setBackgroundImage(newImage);
+    }, 8000);
+
+    return () => clearTimeout(timeoutId);
+  }, [backgroundImage, searchTerm]);
 
   return (
     <main
       className="bg-cover bg-center h-screen font-euclid"
-      style={{ backgroundImage: `url(${home})` }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <Navbar />
 
@@ -42,7 +61,7 @@ export default function Home() {
         </section>
       )}
 
-      <SearchResult />
+      {searched && <SearchResult />}
     </main>
   );
 }
