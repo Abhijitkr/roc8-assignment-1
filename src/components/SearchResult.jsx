@@ -12,7 +12,7 @@ export default function SearchResult() {
     searchHistory,
     handleHistory,
     showModal,
-    setShowModal,
+    handleModal,
   } = useContext(GlobalContext);
 
   return loading ? (
@@ -57,7 +57,7 @@ export default function SearchResult() {
                       src={item.largeImageURL}
                       alt={`${searchTerm} - ${item.id}`}
                       className="rounded-md md:h-[250px] md:w-[400px] m-auto cursor-pointer"
-                      onClick={() => setShowModal(true)}
+                      onClick={() => handleModal(item)}
                     />
                     <ul className="flex gap-5 justify-center">
                       {item.tags.split(",").map((tag, tagIndex) => (

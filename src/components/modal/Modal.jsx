@@ -3,7 +3,7 @@ import crossIcon from "../../icons/cross.svg";
 import tickIcon from "../../icons/tick.svg";
 import { GlobalContext } from "../../context/context";
 export default function Modal() {
-  const { setShowModal } = useContext(GlobalContext);
+  const { setShowModal, selectedImage } = useContext(GlobalContext);
   const [selectedOption, setSelectedOption] = useState(null);
 
   // Checkbox
@@ -28,17 +28,29 @@ export default function Modal() {
     { id: "original", label: "Original", size: "3850x5640" },
   ];
 
+  const imageField = [
+    { key: "User", label: selectedImage.user },
+    { key: "User ID", label: selectedImage.user_id },
+    { key: "Type", label: selectedImage.type },
+    { key: "Views", label: selectedImage.views },
+    { key: "Downloads", label: selectedImage.downloads },
+    { key: "Likes", label: selectedImage.likes },
+  ];
+
   return (
     <section
       className="z-10 bg-black bg-opacity-50 fixed top-0 h-screen w-screen flex"
       onClick={() => setShowModal(false)}
     >
       <div
+        key={selectedImage.id}
         className="rounded-md bg-white w-10/12 m-auto h-[500px] overflow-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="bg-[#F5F5F5] flex justify-between items-center p-3">
-          <h2 className="text-[#3B4043] font-semibold">Preview ID: 48777</h2>
+          <h2 className="text-[#3B4043] font-semibold">
+            Preview ID: {selectedImage.id}
+          </h2>
           <img
             src={crossIcon}
             alt="cross-icon"
@@ -49,10 +61,7 @@ export default function Modal() {
         </header>
         <div className="p-3">
           <div>
-            <img
-              src="https://pixabay.com/get/g54656e4cb08a8ee813f052ee0c85e164dbc16e74de6c6ad09251b544af362792a4679a80366b4b68f092ddc9e40a2a0e726cc34c9918ac33ba32795160a075e9_1280.jpg"
-              alt=""
-            />
+            <img src={selectedImage.largeImageURL} alt="" />
           </div>
           <div className="text-center text-[#3B4043]">
             <div>
@@ -133,46 +142,34 @@ export default function Modal() {
                 <h3 className="text-start mt-5 font-semibold">Information</h3>
               </div>
               <div className="flex mt-4 justify-between gap-3.5 flex-wrap">
-                <div className=" w-20">
-                  <p className="text-[#717579] text-sm font-medium">User</p>
-                  <p className="font-medium">Josch13</p>
-                </div>
-                <div className=" w-20">
-                  <p className="text-[#717579] text-sm font-medium">User ID</p>
-                  <p className="font-medium">4877</p>
-                </div>
-                <div className=" w-20">
-                  <p className="text-[#717579] text-sm font-medium">Type</p>
-                  <p className="font-medium">Photo</p>
-                </div>
-
-                <div className="  w-20">
-                  <p className="text-[#717579] text-sm font-medium">Views</p>
-                  <p className="font-medium">200,000</p>
-                </div>
-                <div className=" w-20">
-                  <p className="text-[#717579] text-sm font-medium">
-                    Downloads
-                  </p>
-                  <p className="font-medium">6,439</p>
-                </div>
-                <div className=" w-20">
-                  <p className="text-[#717579] text-sm font-medium">Likes</p>
-                  <p className="font-medium">564</p>
-                </div>
+                {imageField.map((field) => (
+                  <div key={field.key} className="w-20">
+                    <p className="text-[#717579] text-sm font-medium">
+                      {field.key}
+                    </p>
+                    <p className="font-medium">
+                      {field.label.toLocaleString()}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-        <footer className="p-3 flex gap-3 items-center ">
+        <footer className="px-3 flex gap-3 items-center my-4 mt-2">
           <div>
             <h4 className="font-bold">Tags: </h4>
           </div>
           <div>
-            <ul>
-              <li className="bg-[#F5F5F5] rounded-md text-[#767676] h-fit p-1 px-3  text-sm w-fit">
-                Test
-              </li>
+            <ul className="flex gap-3">
+              {selectedImage.tags.split(",").map((tag, index) => (
+                <li
+                  key={index}
+                  className="bg-[#F5F5F5] rounded-md text-[#767676] h-fit p-1 px-3  text-sm w-fit"
+                >
+                  {tag}
+                </li>
+              ))}
             </ul>
           </div>
         </footer>

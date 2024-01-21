@@ -9,6 +9,7 @@ export default function GlobalState({ children }) {
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const [searchHistory, setSearchHistory] = useLocalStorage(
     "searchHistory",
@@ -44,6 +45,11 @@ export default function GlobalState({ children }) {
     fetchImages(search);
   }
 
+  function handleModal(imageData) {
+    setShowModal(true);
+    setSelectedImage(imageData);
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -60,6 +66,8 @@ export default function GlobalState({ children }) {
         saveHistory,
         showModal,
         setShowModal,
+        handleModal,
+        selectedImage,
       }}
     >
       {children}
