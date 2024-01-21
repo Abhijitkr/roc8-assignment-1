@@ -3,7 +3,8 @@ import crossIcon from "../../icons/cross.svg";
 import tickIcon from "../../icons/tick.svg";
 import { GlobalContext } from "../../context/context";
 export default function Modal() {
-  const { setShowModal, selectedImage } = useContext(GlobalContext);
+  const { setShowModal, selectedImage, handleHistory } =
+    useContext(GlobalContext);
   const [selectedOption, setSelectedOption] = useState(null);
 
   // Checkbox
@@ -39,16 +40,16 @@ export default function Modal() {
 
   return (
     <section
-      className="z-10 bg-black bg-opacity-50 fixed top-0 h-screen w-screen flex"
+      className="bg-black bg-opacity-50 fixed top-0 h-screen w-screen flex"
       onClick={() => setShowModal(false)}
     >
       <div
         key={selectedImage.id}
-        className="rounded-md bg-white w-10/12 m-auto h-[500px] overflow-auto"
+        className="rounded-md bg-white w-10/12 lg:w-11/12 m-auto h-[500px] lg:h-fit overflow-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <header className="bg-[#F5F5F5] flex justify-between items-center p-3">
-          <h2 className="text-[#3B4043] font-semibold">
+        <header className="bg-[#F5F5F5] flex justify-between items-center p-5">
+          <h2 className="text-[#3B4043] font-semibold lg:text-lg lg:font-bold">
             Preview ID: {selectedImage.id}
           </h2>
           <img
@@ -59,13 +60,19 @@ export default function Modal() {
             onClick={() => setShowModal(false)}
           />
         </header>
-        <div className="p-3">
-          <div>
-            <img src={selectedImage.largeImageURL} alt="" />
+        <div className="p-5 lg:flex lg:justify-around lg:w-full lg:gap-10">
+          <div className="md:w-8/12 md:m-auto lg:m-0">
+            <img
+              src={selectedImage.largeImageURL}
+              alt={`Image Id - ${selectedImage.id}`}
+              className="lg:max-h-[500px] rounded-md"
+            />
           </div>
-          <div className="text-center text-[#3B4043]">
+          <div className="text-center text-[#3B4043] lg:w-[300px]">
             <div>
-              <h3 className="text-start mt-5 font-semibold">Download</h3>
+              <h3 className="text-start mt-5 lg:mt-0 font-semibold">
+                Download
+              </h3>
             </div>
             <div>
               <ul className="mt-3 rounded-md border overflow-hidden">
@@ -103,36 +110,38 @@ export default function Modal() {
                 {downloadOptions.map((option) => (
                   <li
                     key={option.id}
-                    className={`border flex justify-between p-3 text-sm relative ${
+                    className={`border flex justify-between p-3 text-sm relative lg:text-xs lg:p-2 ${
                       selectedOption === option.id ? "bg-[#DEE8F4]" : null
-                    }  `}
+                    }`}
                   >
                     <div>
                       <p>{option.label}</p>
                     </div>
-                    <div className="flex gap-5 ">
-                      <p className="font-semibold">{option.size}</p>
+                    <div className="flex gap-5 md:gap-6">
+                      <p className="font-semibold lg:font-bold ">
+                        {option.size}
+                      </p>
                       <input
                         type="radio"
                         name="downloadOption"
                         id={option.id}
                         checked={selectedOption === option.id}
                         onChange={() => setSelectedOption(option.id)}
-                        className="appearance-none h-5 w-5 border border-[#DEE8F4] rounded-full checked:bg-[#4BC34B] checked:border-none cursor-pointer checked:shadow-[rgba(0,0,0,.4)] checked:shadow-md "
+                        className="appearance-none h-5 w-5 border border-[#DEE8F4] rounded-full checked:bg-[#4BC34B] checked:border-none cursor-pointer checked:shadow-[rgba(0,0,0,.4)] checked:shadow-md"
                       />
                       {selectedOption === option.id && (
                         <img
                           src={tickIcon}
                           alt={option.id}
-                          className="absolute top-4 right-4 w-3 h-3 cursor-pointer"
+                          className="absolute top-4 right-4 w-3 h-3 cursor-pointer lg:top-3 lg:right-3"
                         />
                       )}
                     </div>
                   </li>
                 ))}
               </ul>
-              <div className="mt-5">
-                <button className="bg-[#4BC34B] text-white p-3 w-full text-sm font-medium rounded-md">
+              <div className="mt-5 lg:mt-3">
+                <button className="bg-[#4BC34B] text-white p-3 w-full text-sm font-medium rounded-md lg:p-2.5">
                   Download for free!
                 </button>
               </div>
@@ -141,13 +150,16 @@ export default function Modal() {
               <div>
                 <h3 className="text-start mt-5 font-semibold">Information</h3>
               </div>
-              <div className="flex mt-4 justify-between gap-3.5 flex-wrap">
+              <div className="flex mt-4 justify-between gap-3.5 flex-wrap font-medium">
                 {imageField.map((field) => (
-                  <div key={field.key} className="w-20">
-                    <p className="text-[#717579] text-sm font-medium">
+                  <div
+                    key={field.key}
+                    className="w-20 md:w-[150px] lg:w-[70px]"
+                  >
+                    <p className="text-[#717579] text-sm lg:text-xs ">
                       {field.key}
                     </p>
-                    <p className="font-medium">
+                    <p className="text-sm lg:text-sm">
                       {field.label.toLocaleString()}
                     </p>
                   </div>
@@ -156,7 +168,7 @@ export default function Modal() {
             </div>
           </div>
         </div>
-        <footer className="px-3 flex gap-3 items-center my-4 mt-2">
+        <footer className="px-5 flex gap-3 items-center my-4 mt-2">
           <div>
             <h4 className="font-bold">Tags: </h4>
           </div>
@@ -165,7 +177,8 @@ export default function Modal() {
               {selectedImage.tags.split(",").map((tag, index) => (
                 <li
                   key={index}
-                  className="bg-[#F5F5F5] rounded-md text-[#767676] h-fit p-1 px-3  text-sm w-fit"
+                  className="bg-[#F5F5F5] rounded-md text-[#767676] h-fit p-1 px-3  text-sm w-fit cursor-pointer"
+                  onClick={() => handleHistory(tag)}
                 >
                   {tag}
                 </li>
