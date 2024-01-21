@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import home1 from "../images/home1.png";
 import home2 from "../images/home2.png";
 import SearchBar from "./SearchBar";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import SearchResult from "./SearchResult";
 import { GlobalContext } from "../context/context";
 
