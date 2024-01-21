@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { GlobalContext } from "../context/context";
 import { CircleLoader } from "react-spinners";
+import Modal from "./modal/Modal";
 
 export default function SearchResult() {
   const {
@@ -10,6 +11,8 @@ export default function SearchResult() {
     loading,
     searchHistory,
     handleHistory,
+    showModal,
+    setShowModal,
   } = useContext(GlobalContext);
 
   return loading ? (
@@ -53,7 +56,8 @@ export default function SearchResult() {
                     <img
                       src={item.largeImageURL}
                       alt={`${searchTerm} - ${item.id}`}
-                      className="rounded-md md:h-[250px] md:w-[400px] m-auto"
+                      className="rounded-md md:h-[250px] md:w-[400px] m-auto cursor-pointer"
+                      onClick={() => setShowModal(true)}
                     />
                     <ul className="flex gap-5 justify-center">
                       {item.tags.split(",").map((tag, tagIndex) => (
@@ -76,6 +80,7 @@ export default function SearchResult() {
               </h1>
             )}
       </div>
+      {showModal && <Modal />}
     </section>
   );
 }

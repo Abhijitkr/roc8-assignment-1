@@ -8,6 +8,8 @@ export default function GlobalState({ children }) {
   const [dataSet, setDataSet] = useState([]);
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   const [searchHistory, setSearchHistory] = useLocalStorage(
     "searchHistory",
     []
@@ -56,6 +58,8 @@ export default function GlobalState({ children }) {
         setSearchHistory,
         handleHistory,
         saveHistory,
+        showModal,
+        setShowModal,
       }}
     >
       {children}
