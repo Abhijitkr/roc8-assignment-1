@@ -29,8 +29,14 @@ export default function Modal() {
   ];
 
   return (
-    <section className="z-10 bg-black bg-opacity-50 fixed top-0 h-screen w-screen flex">
-      <div className="rounded-md bg-white w-10/12 m-auto h-[500px] overflow-auto ">
+    <section
+      className="z-10 bg-black bg-opacity-50 fixed top-0 h-screen w-screen flex"
+      onClick={() => setShowModal(false)}
+    >
+      <div
+        className="rounded-md bg-white w-10/12 m-auto h-[500px] overflow-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
         <header className="bg-[#F5F5F5] flex justify-between items-center p-3">
           <h2 className="text-[#3B4043] font-semibold">Preview ID: 48777</h2>
           <img
@@ -103,7 +109,7 @@ export default function Modal() {
                         id={option.id}
                         checked={selectedOption === option.id}
                         onChange={() => setSelectedOption(option.id)}
-                        className="appearance-none h-5 w-5 border border-[#DEE8F4] rounded-full checked:bg-[#4BC34B] checked:border-none cursor-pointer hover:shadow-md checked:shadow-[rgba(0,0,0,.4)] checked:shadow-md"
+                        className="appearance-none h-5 w-5 border border-[#DEE8F4] rounded-full checked:bg-[#4BC34B] checked:border-none cursor-pointer checked:shadow-[rgba(0,0,0,.4)] checked:shadow-md "
                       />
                       {selectedOption === option.id && (
                         <img
@@ -116,58 +122,57 @@ export default function Modal() {
                   </li>
                 ))}
               </ul>
-              <div>
-                <button>Download for free!</button>
+              <div className="mt-5">
+                <button className="bg-[#4BC34B] text-white p-3 w-full text-sm font-medium rounded-md">
+                  Download for free!
+                </button>
               </div>
             </div>
-            <div>
+            <div className="mt-5 text-start">
               <div>
-                <h3>Information</h3>
+                <h3 className="text-start mt-5 font-semibold">Information</h3>
               </div>
-              <div>
-                <div>
-                  <div>
-                    <p>User</p>
-                    <p>Josch13</p>
-                  </div>
-                  <div>
-                    <p>User ID</p>
-                    <p>4877</p>
-                  </div>
-                  <div>
-                    <p>Type</p>
-                    <p>Photo</p>
-                  </div>
+              <div className="flex mt-4 justify-between gap-3.5 flex-wrap">
+                <div className=" w-20">
+                  <p className="text-[#717579] text-sm font-medium">User</p>
+                  <p className="font-medium">Josch13</p>
                 </div>
-                <div>
-                  <div>
-                    <p>Views</p>
-                    <p>200,000</p>
-                  </div>
-                  <div>
-                    <p>Downloads</p>
-                    <p>6,439</p>
-                  </div>
-                  <div>
-                    <p>Likes</p>
-                    <p>564</p>
-                  </div>
+                <div className=" w-20">
+                  <p className="text-[#717579] text-sm font-medium">User ID</p>
+                  <p className="font-medium">4877</p>
+                </div>
+                <div className=" w-20">
+                  <p className="text-[#717579] text-sm font-medium">Type</p>
+                  <p className="font-medium">Photo</p>
+                </div>
+
+                <div className="  w-20">
+                  <p className="text-[#717579] text-sm font-medium">Views</p>
+                  <p className="font-medium">200,000</p>
+                </div>
+                <div className=" w-20">
+                  <p className="text-[#717579] text-sm font-medium">
+                    Downloads
+                  </p>
+                  <p className="font-medium">6,439</p>
+                </div>
+                <div className=" w-20">
+                  <p className="text-[#717579] text-sm font-medium">Likes</p>
+                  <p className="font-medium">564</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <footer className="p-3">
+        <footer className="p-3 flex gap-3 items-center ">
           <div>
-            <h4>Tags: </h4>
+            <h4 className="font-bold">Tags: </h4>
           </div>
           <div>
             <ul>
-              <li>Test</li>
-              <li>lorem</li>
-              <li>lorem</li>
-              <li>lorem</li>
-              <li>lorem</li>
+              <li className="bg-[#F5F5F5] rounded-md text-[#767676] h-fit p-1 px-3  text-sm w-fit">
+                Test
+              </li>
             </ul>
           </div>
         </footer>

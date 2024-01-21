@@ -63,7 +63,7 @@ export default function SearchResult() {
                       {item.tags.split(",").map((tag, tagIndex) => (
                         <li
                           key={tagIndex}
-                          className="bg-[#F5F5F5] text-[#767676] h-fit p-1 px-3 mt-2 cursor-pointer"
+                          className="bg-[#F5F5F5] text-[#767676] rounded-md h-fit p-1 px-3 mt-2 cursor-pointer"
                           onClick={() => handleHistory(tag)}
                         >
                           {tag}
