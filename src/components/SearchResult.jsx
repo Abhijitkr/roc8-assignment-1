@@ -66,7 +66,14 @@ export default function SearchResult() {
                           className="bg-[#F5F5F5] text-[#767676] rounded-md h-fit p-1 px-3 mt-2 cursor-pointer"
                           onClick={() => handleHistory(tag)}
                         >
-                          {tag}
+                          {tag
+                            .toLowerCase()
+                            .split(" ")
+                            .map(
+                              (word) =>
+                                word.charAt(0).toUpperCase() + word.slice(1)
+                            )
+                            .join(" ")}
                         </li>
                       ))}
                     </ul>

@@ -6,7 +6,6 @@ import SearchResult from "./SearchResult";
 import { GlobalContext } from "../context/context";
 
 export default function Home() {
-  // const [searched, setSearched] = useState(true);
   const { searchTerm, searched } = useContext(GlobalContext);
 
   return (

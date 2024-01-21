@@ -40,9 +40,14 @@ export default function GlobalState({ children }) {
   }
 
   function handleHistory(search) {
-    setSearchTerm(search);
-    saveHistory(search);
-    fetchImages(search);
+    const strFormat = search
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+    setSearchTerm(strFormat);
+    saveHistory(strFormat);
+    fetchImages(strFormat);
   }
 
   function handleModal(imageData) {

@@ -10,15 +10,18 @@ export default function SearchBar() {
   const { register, handleSubmit, reset } = useForm();
 
   function handleSearch(data) {
-    saveHistory(data.search);
+    const searchFormat = data.search
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+    saveHistory(searchFormat);
     setSearched(true);
-    fetchImages(data.search);
+    fetchImages(searchFormat);
     reset({
       search: "",
     });
   }
-
-  // TODO: Fix the mobile version long search term
 
   return (
     <section className="mt-20 m-auto w-8/12 lg:w-7/12 text-white ">

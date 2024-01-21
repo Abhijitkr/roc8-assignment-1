@@ -30,9 +30,23 @@ export default function Modal() {
   ];
 
   const imageField = [
-    { key: "User", label: selectedImage.user },
+    {
+      key: "User",
+      label: selectedImage.user
+        .toLowerCase()
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" "),
+    },
     { key: "User ID", label: selectedImage.user_id },
-    { key: "Type", label: selectedImage.type },
+    {
+      key: "Type",
+      label: selectedImage.type
+        .toLowerCase()
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" "),
+    },
     { key: "Views", label: selectedImage.views },
     { key: "Downloads", label: selectedImage.downloads },
     { key: "Likes", label: selectedImage.likes },
@@ -45,7 +59,7 @@ export default function Modal() {
     >
       <div
         key={selectedImage.id}
-        className="rounded-md bg-white w-10/12 lg:w-11/12 m-auto h-[500px] lg:h-fit overflow-auto"
+        className="rounded-md bg-white w-10/12 lg:w-11/12 m-auto h-[600px] md:h-[800px] lg:h-fit overflow-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <header className="bg-[#F5F5F5] flex justify-between items-center p-5">
@@ -180,7 +194,11 @@ export default function Modal() {
                   className="bg-[#F5F5F5] rounded-md text-[#767676] h-fit p-1 px-3  text-sm w-fit cursor-pointer"
                   onClick={() => handleHistory(tag)}
                 >
-                  {tag}
+                  {tag
+                    .toLowerCase()
+                    .split(" ")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")}
                 </li>
               ))}
             </ul>
