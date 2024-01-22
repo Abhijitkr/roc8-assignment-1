@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { GlobalContext } from "../context/context";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const { setSearched } = useContext(GlobalContext);
@@ -13,11 +14,9 @@ export default function Navbar() {
           </p>
         </div>
         <ul className="flex items-center gap-5">
-          <li>
-            <a href="#">Login</a>
-          </li>
+          <li>{<Link to="/login">Login</Link>}</li>
           <li className=" border-2 py-1 px-3 rounded-md text-nowrap ">
-            <a href="#">Create Account</a>
+            <Link to="/signup">Create Account</Link>
           </li>
         </ul>
       </nav>

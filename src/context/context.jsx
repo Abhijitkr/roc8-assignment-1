@@ -10,6 +10,7 @@ export default function GlobalState({ children }) {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [token, setToken] = useState(null);
 
   const [searchHistory, setSearchHistory] = useLocalStorage(
     "searchHistory",
@@ -39,6 +40,7 @@ export default function GlobalState({ children }) {
     setSearchHistory(updatedHistory);
   }
 
+  // onclick history
   function handleHistory(search) {
     const strFormat = search
       .toLowerCase()
@@ -73,6 +75,8 @@ export default function GlobalState({ children }) {
         setShowModal,
         handleModal,
         selectedImage,
+        token,
+        setToken,
       }}
     >
       {children}

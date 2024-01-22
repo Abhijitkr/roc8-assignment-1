@@ -8,3 +8,13 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@layer base {
+  label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+  input,
+  textarea {
+    @apply w-full p-2 border border-gray-200 rounded-md;
+  }
+}
