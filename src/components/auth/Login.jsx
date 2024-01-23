@@ -29,7 +29,7 @@ export default function Login() {
         email: "",
         password: "",
       });
-      navigate("/home");
+      navigate("/");
     } catch (e) {
       alert("login", e);
     }
