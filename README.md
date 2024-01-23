@@ -85,10 +85,6 @@ This project is a React-based frontend application that leverages the Pixabay AP
 
    This will start the development server, and you can access the application at http://localhost:5173.
 
-5. Create .env file in the root
-
-   ```bash
-   VITE_PIXABAY_API = <Your pixabay api>
-   ```
+5. Create .env file in the root (Provided .env.example)
 
 ## Check out live project [website](https://imagevista.netlify.app/)
