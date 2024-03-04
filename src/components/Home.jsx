@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../context/context";
 import home1 from "../images/home1.png";
 import home2 from "../images/home2.png";
-import SearchBar from "./SearchBar";
 import Navbar from "./Navbar";
+import SearchBar from "./SearchBar";
 import SearchResult from "./SearchResult";
-import { GlobalContext } from "../context/context";
 
 export default function Home() {
   const { searchTerm, searched } = useContext(GlobalContext);
@@ -18,14 +18,38 @@ export default function Home() {
     return homeBg[nextIndex];
   };
 
+  // Pre Loading Start
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    const preloadImage = (url) => {
+      const img = new Image();
+      img.src = url;
+    };
+
+    const preloadNextImage = () => {
+      const nextImage = getNextBackgroundImage();
+      preloadImage(nextImage);
+    };
+
+    const intervalId = setInterval(() => {
+      preloadNextImage();
       const newImage = getNextBackgroundImage();
       setBackgroundImage(newImage);
     }, 8000);
 
-    return () => clearTimeout(timeoutId);
-  }, [backgroundImage, searchTerm]);
+    return () => clearInterval(intervalId);
+  }, [backgroundImage]);
+  // Pre Loading End
+
+  // Normal Loading Start
+  // useEffect(() => {
+  //   const timeoutId = setTimeout(() => {
+  //     const newImage = getNextBackgroundImage();
+  //     setBackgroundImage(newImage);
+  //   }, 8000);
+
+  //   return () => clearTimeout(timeoutId);
+  // }, [backgroundImage, searchTerm]);
+  // Normal Loading End
 
   return (
     <main
