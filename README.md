@@ -11,16 +11,28 @@ This project is a React-based frontend application that leverages the Pixabay AP
    - Displays a dynamic background image that changes dynamically.
    - Responsive design for optimal viewing on different devices.
 
-2. **Search Result Page:**
+  ![Home Screen](./src/images/Screens/Home_PC.png)
+   <img src="./src/images/Screens/Home_Tab.png" alt="Home Screen Tab" height="350">
+   <img src="./src/images/Screens/Home_Mobile.png" alt="Home Screen Mobile" height="350">
+
+1. **Search Result Page:**
 
    - Features a responsive search bar for user input.
    - Displays search results in a responsive layout.
    - Includes a loading animation while fetching images from the Pixabay API.
 
-3. **Modal Image Detail Page:**
+![ImageResult Screen](./src/images/Screens/ImageResult_PC.png)
+<img src="./src/images/Screens/ImageResult_Tablet_Cropped.png" alt="Home Screen Tab" height="450">
+<img src="./src/images/Screens/ImageResult_Mobile_Cropped.png" alt="Home Screen Mobile" height="450">
+
+1. **Modal Image Detail Page:**
    - Responsive design for desktop, tablet and mobile users.
    - Provides a detailed view of the selected image.
    - Allows users to download the image.
+
+![Modal Screen](./src/images/Screens/Modal_PC_Cropped.png)
+<img src="./src/images/Screens/Modal_Tab_Cropped.png" alt="Home Screen Tab" height="450">
+<img src="./src/images/Screens/Modal_Mobile_Cropped.png" alt="Home Screen Mobile" height="450">
 
 ## Features:
 
