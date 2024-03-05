@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
+import { GlobalContext } from "../../context/context";
 import crossIcon from "../../icons/cross.svg";
 import tickIcon from "../../icons/tick.svg";
-import { GlobalContext } from "../../context/context";
 export default function Modal() {
   const { setShowModal, selectedImage, handleHistory } =
     useContext(GlobalContext);

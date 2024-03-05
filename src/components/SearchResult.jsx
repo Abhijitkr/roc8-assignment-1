@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { GlobalContext } from "../context/context";
 import { CircleLoader } from "react-spinners";
+import { GlobalContext } from "../context/context";
 import Modal from "./modal/Modal";
 
 export default function SearchResult() {
@@ -27,7 +27,7 @@ export default function SearchResult() {
       {searched && (
         <div className="bg-[#F5F5F5] overflow-hidden text-sm lg:text-lg md:text-base w-full p-5">
           {searchHistory && searchHistory.length > 0 && (
-            <div className="flex gap-5 lg:justify-center items-center">
+            <div className="flex gap-5 justify-center items-center">
               {searchHistory.map((historyItem, index) => (
                 <div
                   key={index}
@@ -63,7 +63,7 @@ export default function SearchResult() {
                       {item.tags.split(",").map((tag, tagIndex) => (
                         <li
                           key={tagIndex}
-                          className="bg-[#F5F5F5] text-[#767676] rounded-md h-fit p-1 px-3 mt-2 cursor-pointer"
+                          className="bg-[#F5F5F5] text-[#767676] rounded-md h-fit p-1 px-3 mt-2 cursor-pointer text-center"
                           onClick={() => handleHistory(tag)}
                         >
                           {tag
